@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cars 24 - Used Car Price Prediction</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Used Car Price Prediction</h1>
+      <form action="/predict" method="POST">
+        <label>Model Name:</label>
+        <select name="model_name" required>
+          <option value="">Select Model</option>
+          <option value="0">Alto</option>
+          <option value="1">Baleno</option>
+          <option value="2">City</option>
+          <option value="3">Creta</option>
+          <option value="4">Duster</option>
+          <option value="5">EcoSport</option>
+          <option value="6">Elite</option>
+          <option value="7">Grand</option>
+          <option value="8">i10</option>
+          <option value="9">i20</option>
+          <option value="10">Innova</option>
+          <option value="11">Jazz</option>
+          <option value="12">Nexon</option>
+          <option value="13">Octavia</option>
+          <option value="14">Polo</option>
+          <option value="15">Swift</option>
+          <option value="16">Verna</option>
+          <option value="17">Wagonr</option>
+        </select>
+
+        <label>Manufacturing Year:</label>
+        <input
+          type="number"
+          name="manufacturing_year"
+          min="1900"
+          max="2025"
+          step="1"
+          required
+          placeholder="e.g., 2015"
+        />
+
+        <label>Engine Capacity (cc):</label>
+        <input
+          type="number"
+          name="engine_capacity"
+          min="700"
+          max="2500"
+          step="1"
+          required
+          placeholder="e.g., 1500"
+        />
+
+        <label>Transmission:</label>
+        <select name="transmission" required>
+          <option value="" disabled selected>Select Transmission</option>
+          <option value="1">Manual (1)</option>
+          <option value="0">Automatic (0)</option>
+        </select>
+
+        <label>KM Driven:</label>
+        <input
+          type="number"
+          name="km_driven"
+          min="0"
+          step="1"
+          required
+          placeholder="e.g., 50000"
+        />
+
+        <label>Ownership (number):</label>
+        <input
+          type="number"
+          name="ownership"
+          min="1"
+          max="10"
+          step="1"
+          required
+          placeholder="e.g., 1"
+        />
+
+        <label>Fuel Type:</label>
+        <select name="fuel_type" required>
+          <option value="">Select Fuel Type</option>
+          <option value="2">Petrol</option>
+          <option value="1">Diesel</option>
+          <option value="0">CNG</option>
+          <!-- Add other fuel types if needed -->
+        </select>
+
+        <label>Imperfections (number):</label>
+        <input
+          type="number"
+          name="imperfections"
+          min="0"
+          max="50"
+          step="1"
+          required
+          placeholder="e.g., 5"
+        />
+
+        <label>Repainted Parts (number):</label>
+        <input
+          type="number"
+          name="repainted_parts"
+          min="0"
+          max="50"
+          step="1"
+          required
+          placeholder="Enter number of repainted parts"
+        />
+
+        <button type="submit">Predict Price</button>
+      </form>
+
+      {% if prediction_text %}
+      <div class="result">{{ prediction_text }}</div>
+      {% endif %}
+
+      {% if parsed_values %}
+      <div class="parsed-values">
+        <h3>Values sent to model:</h3>
+        <ul>
+          {% for key, value in parsed_values.items() %}
+            <li><strong>{{ key }}:</strong> {{ value }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

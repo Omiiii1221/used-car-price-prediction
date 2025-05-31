@@ -1,0 +1,8 @@
+used_car_price_prediction/
+│
+├── app.py
+├── rf_model.pkl
+├── templates/
+│    └── index.html
+└── static/
+     └── style.css
