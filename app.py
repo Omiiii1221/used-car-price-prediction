@@ -14,7 +14,6 @@ MODEL_NAME_MAP = {
     0: "Alto", 1: "Baleno", 2: "City", 3: "Creta", 4: "Duster", 5: "EcoSport",
     6: "Elite", 7: "Grand", 8: "i10", 9: "i20", 10: "Innova", 11: "Jazz",
     12: "Nexon", 13: "Octavia", 14: "Polo", 15: "Swift", 16: "Verna", 17: "Wagon"
-    # Update this mapping to match your actual label encoding!
 }
 
 TRANSMISSION_MAP = {0: "Automatic", 1: "Manual"}
